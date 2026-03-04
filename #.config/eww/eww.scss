@@ -1,0 +1,155 @@
+// --- Variables de Color (Tu Paleta ANSI) ---
+$bg-alt:   #45475A; // Color 0
+$red:      #F38BA8; // Color 1
+$green:    #A6E3A1; // Color 2
+$yellow:   #F9E2AF; // Color 3
+$blue:     #89B4FA; // Color 4
+$magenta:  #CBA6F7; // Color 5
+$cyan:     #94E2D5; // Color 6
+$fg:       #BAC2DE; // Color 7
+$bg-light: #585B70; // Color 8
+
+// --- Mixins para evitar repetir código ---
+@mixin module-style {
+  background-color: $bg-alt;
+  color: $fg;
+  border-radius: 12px;
+  padding: 2px 12px;
+  margin: 4px 0;
+}
+
+// --- Estilos Globales ---
+* {
+  all: unset; // Reinicia estilos por defecto de GTK
+  font-family: "JetBrainsMono Nerd Font", sans-serif;
+  font-size: 13px;
+}
+
+// Contenedor principal de la ventana
+.bar-1 {
+  background-color: transparent; // Fondo de la barra transparente
+  padding: 0 10px;
+}
+
+// --- Sección Izquierda ---
+.launcher {
+  @include module-style;
+  background-color: $magenta;
+  color: $bg-alt;
+  font-weight: bold;
+  margin-left: 5px;
+  
+  button:hover { color: white; }
+}
+
+.workspaces {
+  @include module-style;
+  background-color: $bg-light;
+  
+  button {
+    padding: 0 8px;
+    color: $fg;
+    
+    &.workspace-1 { color: $blue; }
+    &.workspace-2 { color: $green; }
+    // Puedes agregar más colores específicos aquí
+    
+    &:hover {
+      background-color: $bg-alt;
+      border-radius: 8px;
+    }
+  }
+}
+
+.wifi {
+  @include module-style;
+  color: $cyan;
+}
+
+// --- Sección Central ---
+.center {
+  // Contenedor de la hora y música
+}
+
+.clock {
+  @include module-style;
+  font-weight: bold;
+  color: $yellow;
+  border: 1px solid rgba($yellow, 0.2);
+}
+
+.music {
+  @include module-style;
+  background-color: $bg-light;
+  color: $magenta;
+}
+
+// --- Sección Derecha ---
+.volume {
+  @include module-style;
+  background-color: $blue;
+  color: $bg-alt;
+  font-weight: bold;
+}
+
+.info {
+  @include module-style;
+  background-color: $bg-light;
+  
+  .cpu { color: $red; margin-right: 8px; }
+  .ram { color: $yellow; margin-right: 8px; }
+  .battery { color: $green; }
+}
+
+.power {
+  @include module-style;
+  background-color: $red;
+  color: $bg-alt;
+  font-weight: bold;
+  margin-right: 5px;
+  
+  button { padding: 0 5px; }
+}
+
+
+
+.user-info {
+  background-color: $bg-alt;
+  border-radius: 24px;
+  padding: 25px;
+  border: 2px solid $bg-light;
+}
+
+
+.power-buttons button {
+  font-size: 60px;
+  font-family: "JetBrainsMono Nerd Font"; 
+  padding: 30px 0;
+  margin: 10px 0;
+  border-radius: 20px;
+}
+
+
+.poweroff {
+  color: $red;
+}
+.poweroff:hover {
+  background-color: $red;
+  color: $bg-alt;
+}
+
+.reboot {
+  color: $yellow;
+}
+.reboot:hover {
+  background-color: $yellow;
+  color: $bg-alt;
+}
+
+.zzz {
+  color: $blue;
+}
+.zzz:hover {
+  background-color: $blue;
+  color: $bg-alt;
+}

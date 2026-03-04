@@ -1,0 +1,78 @@
+/* --- Variables de Color (Tu Paleta) --- */
+@define-color bg #45475A;        /* color0 */
+@define-color bg-light #585B70;  /* color8 */
+@define-color fg #BAC2DE;        /* color7 */
+@define-color accent #CBA6F7;    /* color5 (Malva) */
+@define-color selected #89B4FA;  /* color4 (Azul) */
+@define-color red #F38BA8;       /* color1 */
+
+* {
+    font-family: "JetBrainsMono Nerd Font", sans-serif;
+    font-size: 14px;
+}
+
+/* Ventana principal */
+window {
+    margin: 0px;
+    border: 2px solid @accent;
+    background-color: @bg;
+    border-radius: 15px;
+}
+
+/* Contenedor de búsqueda */
+#outer-box {
+    margin: 10px;
+    border: none;
+    background-color: transparent;
+}
+
+/* Caja de entrada de texto (Search Bar) */
+#input {
+    margin: 10px;
+    border: none;
+    border-radius: 10px;
+    background-color: @bg-light;
+    color: @fg;
+    padding: 10px;
+}
+
+#input:focus {
+    border: 1px solid @selected;
+}
+
+/* Contenedor de la lista de aplicaciones */
+#scroll {
+    margin: 5px;
+    border: none;
+}
+
+/* Cada fila/item de la lista */
+#entry {
+    margin: 5px;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    color: @fg;
+}
+
+/* Item seleccionado */
+#entry:selected {
+    background-color: @selected;
+    color: @bg; /* Texto oscuro sobre fondo claro */
+    outline: none;
+}
+
+/* Texto de la aplicación */
+#text {
+    margin: 5px;
+}
+
+/* Iconos (si los activas) */
+#img {
+    margin-right: 10px;
+}
+
+/* Eliminar el scrollbar visualmente */
+#scroll-box {
+    margin-right: -15px; /* Truco para ocultar si hide_scroll no basta */
+}

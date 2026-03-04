@@ -1,0 +1,185 @@
+(defwidget bar []
+ (box :orientation "h"
+       :class "bar-1"
+       :space-evenly true
+       (box :halign "start" :space-evenly false :hexpand true (izquierda))
+       (box :halign "center" :space-evenly false :hexpand true (center))
+       (box :halign "end" :space-evenly false :hexpand true (derecha))))
+
+;;/////////////////////////////////;;
+;;////////////izquierda////////////;;
+;;/////////////////////////////////;;
+
+(defwidget izquierda []
+  (box :orientation "h"
+       :space-evenly false
+       :spacing 20
+       :class "izquierda"
+       (launcher)
+       (workspaces)
+       (wifi)))
+
+(defwidget launcher []
+  (box :orientation "h"
+       :class "launcher"
+       (button :onclick "wofi --show drun &"
+               "Launcher")))
+
+(defwidget wifi []
+  (box :orientation "h"
+       :class "wifi"
+       (button :onclick 'hyprctl dispatch exec "[float; size 600 500; move 100 100] kitty python3 /home/ricardo/.apps/wifi-TUI/main.py"'
+               "WIFI")))
+
+(defwidget workspaces []
+  (box :orientation "h"
+       :class "workspaces"
+       :spacing 10
+       (button :onclick "hyprctl dispatch workspace 1"
+               :class "workspace-1"
+	         "1")
+         (button :onclick "hyprctl dispatch workspace 2"
+	         :class "workspace-2"
+	         "2")
+	 (button :onclick "hyprctl dispatch workspace 3"
+	         :class "workspace-3"
+		 "3")
+	 (button :onclick "hyprctl dispatch workspace 4"
+	         :class "workspace-4"
+		 "4")
+	 (button :onclick "hyprctl dispatch workspace 5"
+	         :class "workspace-5"
+		 "5")))
+
+;;//////////////////////////////;;
+;;////////////center////////////;;
+;;//////////////////////////////;;
+
+(defwidget center []
+  (box :orientation "h"
+       :space-evenly false
+       :spacing 5
+       :class "center"
+       (clock)
+       (music)))
+
+(defpoll hora :interval "1s"
+  "date +%H:%M:%S")
+
+(defwidget clock []
+  (box :orientation "h"
+       :class "clock"
+       (label :text hora)))
+
+(defwidget music []
+  (box :orientation "h"
+       :class "music"
+       (button :onrightclick "spotify &"
+               :onclick "hyprctl dispatch exec '[float; size 400 300; move 100 100] kitty python3 ~/.apps/reproductor-TUI/main.py'"
+               "Music")))
+
+;;///////////////////////////////;;
+;;////////////derecha////////////;;
+;;///////////////////////////////;;
+
+(defwidget derecha []
+  (box :orientation "h"
+       :space-evenly false
+       :spacing 5
+       :class "derecha"
+       (volume)
+       (info)
+       (power)))
+
+
+(defwidget volume []
+    (box :orientation "h"
+         :class "volume"
+         (button :onclick "~/.config/eww/scripts/volume_up.sh"
+	         :onrightclick "~/.config/eww/scripts/volume_down.sh"
+		 "vol")))
+
+(defwidget info []
+  (box :orientation "h"
+       :spacing 1
+       :class "info"
+       (cpu)
+       (ram)
+       (battery)))
+
+(defpoll cpu :interval "10s"
+  "scripts/cpu.sh")
+
+(defwidget cpu []
+  (box :orientation "h"
+       :class "cpu"
+       (label :text "cpu: ${cpu}")))
+
+(defpoll ram :interval "10s"
+  "scripts/ram.sh")
+
+(defwidget ram []
+  (box :orientation "h"
+       :class "ram"
+       (label :text "ram: ${ram}")))
+
+(defpoll battery :interval "120s"
+  "scripts/battery.sh")
+
+(defwidget battery []
+  (box :orientation "h"
+       :class "battery"
+       (label :text "BAT: ${battery}")))
+
+(defwidget power []
+  (box :orientation "h"
+       :class "power"
+       (button :onclick "eww open user-info"
+               :onrightclick "eww close user-info"
+               "POW")))
+
+;;//////////////////////////////////;;
+;;////////////window-bar////////////;;
+;;//////////////////////////////////;;
+
+(defwindow bar
+  :monitor 0
+  :geometry (geometry :x "0%"
+                      :y "5px"
+                      :width "99%"
+                      :height "20px"
+                      :anchor "top center")
+  :stacking "fg"
+  :windowtype "dock"
+  :exclusive true
+  :focusable false
+
+(bar))
+
+
+;;/////////////////////////////////;;
+;;////////////USER-UNFO////////////;;
+;;/////////////////////////////////;;
+
+(defwindow user-info
+  :monitor 0
+  :geometry (geometry :x "90%"
+                      :y "0px"
+		      :width "10%"
+		      :height "100px")
+  (user-info))
+
+
+(defwidget user-info []
+  (box :orientation "v"
+       :class "user-info"
+       (power-buttons)))
+
+(defwidget power-buttons []
+  (box :orientation "v"
+       :class "power-buttons"
+       (button :onclick "poweroff" :class "poweroff" "⏻")
+       (button :onclick "reboot" :class "reboot" "⏼")
+       (button :onclick "" :class "zzz" "ZZZ")))
+       
+
