@@ -1,0 +1,30 @@
+requirements:
+
+#.apps/wifi-TUI:
+
+python librerias:
+
+
+  python3
+
+#.apps/reproductor-TUI:
+
+python librerias:
+  
+  textual, backend
+
+nesesita funcionando ALSA, PulseAudio o PipeWire
+
+y tenes isntalado los paquetes mpg123, flac y libvorbis
+
+# en general:
+
+en general:
+
+hyprland, eww, swww, wofi, kitty, pulseaudio, pamixer, 
+pavucontrol, iwd, qt6-base, qt6-wayland, kvantum, kvantum-qt5,
+python, python-textual, python-pygame, python-customtkinter,
+mpvpaper, git, base-devel, 
+zen-browser (o cualquier navegador / or any preferred browser),
+nvim (o su editor de preferencia / or your preferred editor)
+
