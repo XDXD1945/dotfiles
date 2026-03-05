@@ -1,1 +1,2 @@
-en la carpeta music va sus musicas
+en la carpeta /music va sus musicas:
+~/.apps/reproductor-TUI/music
