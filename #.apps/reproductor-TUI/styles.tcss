@@ -1,0 +1,54 @@
+/* styles.tcss corregido */
+Screen {
+    background: #1e1e2e;
+    color: #BAC2DE; 
+}
+
+Header {
+    background: #45475A; 
+    color: #CBA6F7;      
+    text-style: bold;
+}
+
+#lista-canciones {
+    width: 40%;
+    height: 100%;
+    /* Cambiado: 'solid' en vez de 'vline' */
+    border-right: solid #585B70; 
+    background: #181825;
+}
+
+#visor-reproduccion {
+    width: 60%;
+    align: center middle;
+    padding: 2;
+}
+
+Label {
+    margin: 1;
+}
+
+#titulo-actual {
+    color: #F9E2AF; 
+    text-style: bold;
+    /* Eliminado font-size, no es compatible */
+}
+
+ProgressBar {
+    width: 80%;
+    /* El color de la barra se define así en Textual */
+}
+
+ProgressBar > .bar--complete {
+    background: #A6E3A1;
+}
+
+Footer {
+    background: #45475A;
+    color: #89B4FA;
+}
+
+ListItem.--highlight {
+    background: #585B70;
+    color: #94E2D5;
+}
